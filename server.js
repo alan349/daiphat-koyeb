@@ -1,15 +1,15 @@
 const express = require("express");
-const fs = require("fs");
 const app = express();
-const PORT = process.env.PORT || 3000;
 const path = require("path");
 
-// ✅ Phục vụ file tĩnh nếu cần
+const PORT = process.env.PORT || 3000;
+
+// phục vụ file tĩnh nếu bạn có thêm CSS, JS...
 app.use(express.static(__dirname));
 
-// ✅ Sửa phần này
+// trả về index.html đúng MIME type
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html")); // ✅ Trả HTML đúng cách
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(PORT, () => {
